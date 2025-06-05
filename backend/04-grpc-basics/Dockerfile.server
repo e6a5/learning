@@ -1,0 +1,37 @@
+FROM bufbuild/buf:latest AS buf-builder
+
+# Builder stage
+FROM golang:1.23.4-alpine AS builder
+
+WORKDIR /app
+
+# Install buf
+COPY --from=buf-builder /usr/local/bin/buf /usr/local/bin/buf
+
+# Copy configuration files
+COPY buf.yaml buf.gen.yaml ./
+
+# Copy go mod files
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy source code
+COPY . .
+
+# Generate protobuf code with buf
+RUN buf generate
+
+# Build the server
+RUN go build -o server ./server
+
+# Runtime stage
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+
+COPY --from=builder /app/server .
+
+EXPOSE 50051
+
+CMD ["./server"] 

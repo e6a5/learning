@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/e6a5/learning/backend/04-grpc-basics/proto";
+
+// User service definition
+service UserService {
+  // Unary RPC: Create a user
+  rpc CreateUser(CreateUserRequest) returns (UserResponse);
+  
+  // Unary RPC: Get a user by ID
+  rpc GetUser(GetUserRequest) returns (UserResponse);
+  
+  // Unary RPC: List users with pagination
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+  
+  // Server streaming RPC: Watch user updates
+  rpc WatchUsers(WatchUsersRequest) returns (stream UserResponse);
+  
+  // Client streaming RPC: Batch create users
+  rpc BatchCreateUsers(stream CreateUserRequest) returns (BatchCreateResponse);
+}
+
+// Message definitions
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  int64 created_at = 4;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message GetUserRequest {
+  int32 id = 1;
+}
+
+message UserResponse {
+  User user = 1;
+  string message = 2;
+  bool success = 3;
+}
+
+message ListUsersRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message WatchUsersRequest {
+  // Empty for now - could add filters
+}
+
+message BatchCreateResponse {
+  int32 created_count = 1;
+  repeated string errors = 2;
+} 

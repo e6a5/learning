@@ -1,0 +1,50 @@
+{"level":"info","msg":"🚀 HTTP Server starting","port":"8080","time":"2025-06-05T07:03:10+07:00","version":"1.0.0"}
+{"level":"info","msg":"Running Go fundamentals examples from basics package...","time":"2025-06-05T07:03:19+07:00"}
+🎓 Go Fundamentals Examples
+========================================
+
+1️⃣ Variables and Types
+Name: Alice, Age: 30, Max Users: 100
+Active: true, Score: 95.5
+Zero values - Count: 0, Message: '', Ready: false
+
+2️⃣ Control Structures
+Adult
+Numbers: 1 2 3 4 5 
+Fruits: 0:apple 1:banana 2:orange 
+Start of work week
+
+3️⃣ Functions
+10 / 2 = 5
+Error: cannot divide by zero
+Sum of 1,2,3,4,5 = 15
+
+4️⃣ Structs and Methods
+Person 1: {Name:Bob Age:35 Email:bob@example.com IsAdmin:false}
+Person 2: {Name:Carol Age:28 Email:carol@example.com IsAdmin:true}
+Updated age: 36
+
+5️⃣ Slices and Maps
+Users slice: [Alice Bob Carol]
+Length: 3, Capacity: 4
+First user: Alice
+Last user: Carol
+First two: [Alice Bob]
+User ages: map[Alice:30 Bob:35 Carol:28]
+Alice is 30 years old
+All ages: Alice:30 Bob:35 Carol:28 
+
+6️⃣ Pointers
+Age value: 25
+Age address: 0xc000090e48
+Value at address: 25
+Modified age: 26
+User name: Dave
+Updated user: {Name:Dave Age:41}
+
+7️⃣ Error Handling
+Converted '123' to 123
+Error converting 'abc': strconv.Atoi: parsing "abc": invalid syntax
+Parsed time: December 25, 2023
+{"level":"info","msg":"Go fundamentals examples completed","time":"2025-06-05T07:03:19+07:00"}
+{"duration":461595,"ip":"[::1]:52825","level":"info","method":"GET","msg":"Request processed","path":"/learn/examples","time":"2025-06-05T07:03:19+07:00"}
