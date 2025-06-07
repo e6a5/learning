@@ -1,0 +1,41 @@
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore local development files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore binaries
+bin/
+*.exe
+error-handling-server
+test-server
+
+# Ignore documentation files that aren't needed in container
+README.md
+*.md
+
+# Ignore macOS files
+.DS_Store
+.DS_Store?
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore logs
+*.log
+
+# Ignore test coverage
+coverage.out
+*.test
+
+# Ignore temporary files
+tmp/
+temp/ 
