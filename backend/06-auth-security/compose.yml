@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8
+    container_name: auth-lab-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: authlab
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "user", "-ppass"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8081:8080"
+    environment:
+      - DB_DSN=user:pass@tcp(db:3306)/authlab?parseTime=true
+    restart: unless-stopped
+    command: ["./app"]
+
+volumes:
+  mysql_data: 
