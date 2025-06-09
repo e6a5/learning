@@ -48,7 +48,7 @@ Welcome to hands-on backend exploration! Instead of following a rigid curriculum
 | **Testing & Quality** | "How do you ensure backend code works reliably?" | `05-testing-basics/` | ✅ **Complete** |
 | **Authentication & Security** | "How do you secure APIs and protect user data?" | `06-auth-security/` | 🚨 **Critical** |
 | **Error Handling** | "How do production systems handle failures gracefully?" | `07-error-handling/` | 🔥 **High** |
-| **Observability** | "How do you know if your system is healthy?" | `08-monitoring/` | 🔥 **High** |
+| **Observability** | "How do you know if your system is healthy?" | `08-monitoring/` | ✅ **Complete** |
 
 ### 🎯 **Production Skills** (Medium Priority)
 
