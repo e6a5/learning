@@ -58,3 +58,11 @@ func TestColorize(t *testing.T) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}
 }
+
+func TestPrintAtCoordinatesWithColor(t *testing.T) {
+	expected := ESC + "[5;10H" + ESC + "[31mX" + ESC + "[0m"
+	result := PrintAtCoordinatesWithColor(5, 10, 'X', 31)
+	if result != expected {
+		t.Errorf("Expected %s, got %s", expected, result)
+	}
+}

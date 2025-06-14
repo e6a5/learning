@@ -25,3 +25,15 @@ func MoveCursor(x, y int) string {
 func Colorize(text string, color int) string {
 	return fmt.Sprintf("%s[%dm%s%s[0m", ESC, color, text, ESC)
 }
+
+// if color code is 0, it will not be colored
+func PrintAtCoordinatesWithColor(x, y int, char rune, colorCode int) string {
+	positioned := MoveCursor(x, y)
+	colored := ""
+	if colorCode != 0 {
+		colored = Colorize(string(char), colorCode)
+	} else {
+		colored = string(char)
+	}
+	return positioned + colored
+}
