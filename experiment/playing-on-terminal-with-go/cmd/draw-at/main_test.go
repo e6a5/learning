@@ -18,13 +18,13 @@ func TestRun(t *testing.T) {
 		{
 			name:     "print at coordinates",
 			args:     []string{"--x=5", "--y=10", "--char=X"},
-			expected: ansi.ESC + "[5;10HX",
+			expected: ansi.ESC + "[10;5HX",
 			wantErr:  false,
 		},
 		{
 			name:     "print at coordinates with color",
 			args:     []string{"--x=5", "--y=10", "--char=X", "--color=red"},
-			expected: ansi.ESC + "[5;10H" + ansi.ESC + "[31mX" + ansi.ESC + "[0m",
+			expected: ansi.ESC + "[10;5H" + ansi.ESC + "[31mX" + ansi.ESC + "[0m",
 			wantErr:  false,
 		},
 		{

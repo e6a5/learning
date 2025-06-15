@@ -7,7 +7,7 @@ const (
 )
 
 func PrintAtCoordinates(x, y int, text rune) string {
-	return fmt.Sprintf("%s[%d;%dH%c", ESC, x, y, text)
+	return fmt.Sprintf("%s[%d;%dH%c", ESC, y, x, text)
 }
 
 func ClearScreen() string {
@@ -19,7 +19,7 @@ func ClearLine() string {
 }
 
 func MoveCursor(x, y int) string {
-	return fmt.Sprintf("%s[%d;%dH", ESC, x, y)
+	return fmt.Sprintf("%s[%d;%dH", ESC, y, x)
 }
 
 func Colorize(text string, color int) string {

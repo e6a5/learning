@@ -9,14 +9,14 @@ func TestPrintAtCoordinates(t *testing.T) {
 		text     rune
 		expected string
 	}{
-		{1, 2, 'X', ESC + "[1;2HX"},
-		{1, 2, 'Y', ESC + "[1;2HY"},
-		{1, 3, 'Z', ESC + "[1;3HZ"},
-		{2, 1, 'A', ESC + "[2;1HA"},
+		{1, 2, 'X', ESC + "[2;1HX"},
+		{1, 2, 'Y', ESC + "[2;1HY"},
+		{1, 3, 'Z', ESC + "[3;1HZ"},
+		{2, 1, 'A', ESC + "[1;2HA"},
 		{2, 2, 'B', ESC + "[2;2HB"},
-		{2, 3, 'C', ESC + "[2;3HC"},
-		{3, 1, 'D', ESC + "[3;1HD"},
-		{3, 2, 'E', ESC + "[3;2HE"},
+		{2, 3, 'C', ESC + "[3;2HC"},
+		{3, 1, 'D', ESC + "[1;3HD"},
+		{3, 2, 'E', ESC + "[2;3HE"},
 	}
 
 	for _, test := range tests {
@@ -44,7 +44,7 @@ func TestClearLine(t *testing.T) {
 }
 
 func TestMoveCursor(t *testing.T) {
-	expected := ESC + "[1;2H"
+	expected := ESC + "[2;1H"
 	result := MoveCursor(1, 2)
 	if result != expected {
 		t.Errorf("Expected %s, got %s", expected, result)
@@ -60,7 +60,7 @@ func TestColorize(t *testing.T) {
 }
 
 func TestPrintAtCoordinatesWithColor(t *testing.T) {
-	expected := ESC + "[5;10H" + ESC + "[31mX" + ESC + "[0m"
+	expected := ESC + "[10;5H" + ESC + "[31mX" + ESC + "[0m"
 	result := PrintAtCoordinatesWithColor(5, 10, 'X', 31)
 	if result != expected {
 		t.Errorf("Expected %s, got %s", expected, result)
