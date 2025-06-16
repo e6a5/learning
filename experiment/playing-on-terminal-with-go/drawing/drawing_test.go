@@ -40,6 +40,34 @@ func TestDrawLine(t *testing.T) {
 			char:     'X',
 			expected: ansi.ESC + "[1;1HX" + ansi.ESC + "[2;2HX" + ansi.ESC + "[3;3HX" + ansi.ESC + "[4;4HX" + ansi.ESC + "[5;5HX",
 		},
+		// TODO: add more tests for other diagonal lines like top-left to bottom-right, bottom-right to top-left, top-right to bottom-left, bottom-left to top-right
+		{
+			name:     "top-left to bottom-right diagonal line",
+			x1:       1,
+			y1:       5,
+			x2:       3,
+			y2:       3,
+			char:     'X',
+			expected: ansi.ESC + "[5;1HX" + ansi.ESC + "[4;2HX" + ansi.ESC + "[3;3HX",
+		},
+		{
+			name:     "bottom-right to top-left diagonal line",
+			x1:       3,
+			y1:       3,
+			x2:       1,
+			y2:       5,
+			char:     'X',
+			expected: ansi.ESC + "[3;3HX" + ansi.ESC + "[4;2HX" + ansi.ESC + "[5;1HX",
+		},
+		{
+			name:     "top-right to bottom-left diagonal line",
+			x1:       3,
+			y1:       1,
+			x2:       1,
+			y2:       3,
+			char:     'X',
+			expected: ansi.ESC + "[1;3HX" + ansi.ESC + "[2;2HX" + ansi.ESC + "[3;1HX",
+		},
 	}
 
 	for _, test := range tests {
