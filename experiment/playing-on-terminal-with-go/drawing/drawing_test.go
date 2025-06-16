@@ -79,3 +79,50 @@ func TestDrawLine(t *testing.T) {
 		})
 	}
 }
+
+func TestDrawRect(t *testing.T) {
+	tests := []struct {
+		name          string
+		x, y          int
+		width, height int
+		char          rune
+		expected      string
+	}{
+		{
+			name:     "rectangle",
+			x:        1,
+			y:        1,
+			width:    3,
+			height:   2,
+			char:     'X',
+			expected: ansi.ESC + "[1;1HX" + ansi.ESC + "[1;2HX" + ansi.ESC + "[1;3HX" + ansi.ESC + "[2;1HX" + ansi.ESC + "[2;2HX" + ansi.ESC + "[2;3HX",
+		},
+		{
+			name:     "rectangle with width 1",
+			x:        1,
+			y:        1,
+			width:    1,
+			height:   3,
+			char:     'X',
+			expected: ansi.ESC + "[1;1HX" + ansi.ESC + "[2;1HX" + ansi.ESC + "[3;1HX",
+		},
+		{
+			name:     "rectangle with height 1",
+			x:        1,
+			y:        1,
+			width:    3,
+			height:   1,
+			char:     'X',
+			expected: ansi.ESC + "[1;1HX" + ansi.ESC + "[1;2HX" + ansi.ESC + "[1;3HX",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := DrawRect(test.x, test.y, test.width, test.height, test.char)
+			if result != test.expected {
+				t.Errorf("DrawRect() = %q, want %q", result, test.expected)
+			}
+		})
+	}
+}

@@ -13,6 +13,15 @@ func DrawLine(x1, y1, x2, y2 int, char rune) string {
 	return DrawDiagonalLine(x1, y1, x2, y2, char)
 }
 
+func DrawRect(x, y, width, height int, char rune) string {
+	result := ""
+	// Draw each row of the rectangle
+	for row := 0; row < height; row++ {
+		result += DrawHorizontalLine(x, x+width-1, y+row, char)
+	}
+	return result
+}
+
 func DrawHorizontalLine(x1, x2, y int, char rune) string {
 	result := ""
 	for x := x1; x <= x2; x++ {
