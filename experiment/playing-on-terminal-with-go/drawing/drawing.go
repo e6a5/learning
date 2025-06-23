@@ -22,6 +22,22 @@ func DrawRect(x, y, width, height int, char rune) string {
 	return result
 }
 
+// box outline only, no fill
+func DrawBox(x, y, width, height int, char rune) string {
+	result := ""
+	for row := 0; row < height; row++ {
+		if row == 0 || row == height-1 {
+			result += DrawHorizontalLine(x, x+width-1, y+row, char)
+		} else {
+			result += DrawVerticalLine(x, y+row, y+row, char)
+			if width > 1 {
+				result += DrawVerticalLine(x+width-1, y+row, y+row, char)
+			}
+		}
+	}
+	return result
+}
+
 func DrawHorizontalLine(x1, x2, y int, char rune) string {
 	result := ""
 	for x := x1; x <= x2; x++ {
